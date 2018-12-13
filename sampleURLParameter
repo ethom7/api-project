@@ -1,0 +1,39 @@
+
+
+private String buildAPIUrl() {
+  
+
+}
+
+
+private String buildAPIURLParameters(String action, String key, String target, String type, String xpath) {
+    return buildAPIURLParameters(action, key, target, type, xpath, null, null, null);
+}
+
+private String buildAPIURLParameters(String action, String key, String target, String type, String xpath, String cmd, String element,
+      String vsys) {
+    StringBuilder builder = new StringBuilder();
+    // type and key are required parameters
+    builder.append(API_TYPE + type);
+    builder.append("&" + API_KEY + key);
+
+    if (!Strings.isNullOrEmpty(action)) {
+      builder.append("&" + API_ACTION + action);
+    }
+    if (!Strings.isNullOrEmpty(cmd)) {
+      builder.append("&" + API_CMD + cmd);
+    }
+    if (!Strings.isNullOrEmpty(element)) {
+      builder.append("&" + API_ELEMENT + element);
+    }
+    if (!Strings.isNullOrEmpty(target)) {
+      builder.append("&" + API_TARGET + target);
+    }
+    if (!Strings.isNullOrEmpty(vsys)) {
+      builder.append("&" + API_VSYS + vsys);
+    }
+    if (!Strings.isNullOrEmpty(xpath)) {
+      builder.append("&" + API_XPATH + xpath);
+    }
+    return builder.toString();
+}
